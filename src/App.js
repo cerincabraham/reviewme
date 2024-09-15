@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Reviewme from './components/Reviewme';
 import UpdateContactInfo from './components/UpdateContactInfo';
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+import { Navbartop } from './components/Navbartop';
 
 
 function RoutesComponent() {
@@ -19,13 +20,17 @@ function RoutesComponent() {
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <>
+      <Navbartop />
+      <div className="App">
+        <Router>
 
-        <RoutesComponent />
+          <RoutesComponent />
 
-      </Router>
-    </div>
+        </Router>
+      </div>
+    </>
+
   );
 }
 
