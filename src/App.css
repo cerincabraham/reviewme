@@ -2,8 +2,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  color: aliceblue;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   width: 100vw;
   height: 100vh;
+}
+
+.background-wrapper {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.821),
+      rgba(0, 0, 0, 0.149)
+    ),
+    url("./assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  background-color: #f4821e; /* Green */
+  border: none;
+  color: white;
+  width: 200px;
+  padding: 6px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }

@@ -3,31 +3,19 @@ import './App.css';
 import Home from './components/Home';
 import Reviewme from './components/Reviewme';
 import UpdateContactInfo from './components/UpdateContactInfo';
-import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
-import { Navbartop } from './components/Navbartop';
-
-
-function RoutesComponent() {
-  // Define your routes here
-  let routes = useRoutes([
-    { path: "/", element: <Home /> },
-    { path: "reviewme", element: <Reviewme /> },
-    { path: "updatecontact", element: <UpdateContactInfo /> }
-  ]);
-
-  return routes;
-}
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 function App() {
   return (
     <>
-      <Navbartop />
-      <div className="App">
-        <Router>
-
-          <RoutesComponent />
-
-        </Router>
+      <div className="Width 100%">
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/reviewme' element={<Reviewme />} />
+            <Route path='/updatecontact' element={<UpdateContactInfo />} />
+          </Routes>
+        </BrowserRouter>
       </div>
     </>
 
@@ -35,3 +23,5 @@ function App() {
 }
 
 export default App;
+
+
