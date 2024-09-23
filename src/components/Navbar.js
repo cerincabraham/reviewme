@@ -1,11 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import homeicon from "../assets/Home.png";
+import backInactive from "../assets/back-inactive.png";
+import logo from '../assets/Karakafamily-logo---02.png';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 function Navbar() {
     return (
-        <div >
-
-        </div>
+        <nav className='d-flex flex-row justify-content-evenly align-items-center text-dark font-bold topbar w-100 ' style={{ height: "10vh" }}>
+            < div className='d-flex flex-row  justify-content-around align-items-center ' style={{ height: "100%", width: "85%" }
+            }>
+                <img src={logo} style={{ height: '45px' }} alt="Logo" />
+            </ div>
+            <div className="d-flex flex-row  justify-content-center align-items-center gap-5 bg-block topbart-nav" >
+                <img src={backInactive} style={{ height: '30px' }} alt="Back Inactive" />
+                <Link to="/" className='nav-link'><img src={homeicon} style={{ height: '25px' }} alt="GroupLogo" /></Link>
+            </div>
+        </nav >
     )
 }
 
