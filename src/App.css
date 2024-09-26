@@ -8,27 +8,51 @@
   height: 100vh;
 }
 
+h1 {
+  font-size: 35px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+h5 {
+  font-size: 15px;
+  font-weight: 500;
+}
 .text-sub {
   color: #0ab5b0;
 }
-
-.text-primary {
+.textMain {
   color: #ffffff;
 }
 
-.text-secondary {
+.textPrimary {
   color: #2d323a;
 }
 
-.bg-secondary {
+.textSecondary {
+  color: #9ca0af;
+}
+
+.bgSecondary {
   background-color: #ffbb5c;
 }
 
-.bg-primary {
+.bgPrimary {
   background-color: #ffffff;
 }
-.bg-block {
+.bgNav {
+  background-color: #f1f1f0;
+}
+.bgBlock {
   background-color: #2d323a;
+}
+.btnColorHappy {
+  background-color: #75bd43; /* Green */
+}
+.btnColorUnhappy {
+  background-color: #bd4343; /* Green */
 }
 
 .background-wrapper {
@@ -58,9 +82,18 @@
   display: inline-block;
   font-size: 16px;
 }
-
-.topbar {
-  background-color: #1b15100d;
+.reviewBtn {
+  border: none;
+  border-radius: 12px;
+  color: white;
+  width: 220px;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.dropShadow {
   -webkit-box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
@@ -69,4 +102,51 @@
   height: 100%;
   width: 15%;
   border-radius: 0px 0px 0px 40px;
+}
+.blockConatiner {
+  height: 80%;
+  width: 300%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  transition: all 0.25s ease-in-out;
+}
+.blockSection {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  background-image: url(./assets/blockBg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-block: 60px;
+  margin-inline: 60px;
+  z-index: 1000;
+}
+
+.blockIn {
+  animation: AnmIn 0.65s ease-in-out forwards;
+}
+
+.blockOut {
+  animation: AnmOut 0.65s ease-in-out forwards;
+}
+
+@keyframes AnmIn {
+  0% {
+    translate: 120% 0;
+    display: none !important;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+@keyframes AnmOut {
+  0% {
+    translate: 0 0;
+  }
+  100% {
+    translate: -120% 0;
+    display: none !important;
+  }
 }
