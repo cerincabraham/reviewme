@@ -94,7 +94,7 @@ function Reviewme() {
                         {recommend}
                         {blockCard}
                     </dv>
-                    <div className='d-flex flex-column justify-content-center align-items-center w-100 border border-success  position-relative' style={{ height: "100%" }}>
+                    <div className='d-flex flex-column justify-content-center align-items-center w-100 border border-success  position-relative overflow-hidden' style={{ height: "100%" }}>
                         <div className={`blockConatiner${blockCard === 2 ? '' : ''}`} style={{ left: `${blockCard}%` }}>
                             <Feedback />
                             <RecommendUs callback={recommendCallback} />

@@ -1,11 +1,74 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 import '../App.css'
 import Reviewme from './Reviewme';
 import UpdateContactInfo from './UpdateContactInfo';
-import { useNavigate } from 'react-router-dom';
 import groupLogo from '../assets/KPT-Logo---01.png'
 import logoWhite from '../assets/Karakafamily-logo---01.png'
+
+
 function Home() {
+
+    const [link1, setLink1] = useState('');
+    const [link2, setLink2] = useState('');
+
+    const [backendData, setBackendData] = useState([{}]);
+    const [emailData, setEmailData] = useState({
+        to: '',
+        name: '',
+    });
+
+
+
+    const handleChange = (e) => {
+        setEmailData({ ...emailData, [e.target.name]: e.target.value });
+        console.log("email data", emailData);
+    };
+
+
+    useEffect(() => {
+        fetch("/api").then(
+            response => response.json()
+        ).then((data) => {
+            setBackendData(data);
+        }).catch((err) => {
+
+        });
+
+
+    }, [])
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+
+            const responseLink1 = await fetch('/Links/googleLink.txt');
+            const link1Text = await responseLink1.text();
+            setLink1(link1Text);
+
+            const responseLink2 = await fetch('/Links/facebookLink.txt');
+            const link2Text = await responseLink2.text();
+            setLink2(link2Text);
+
+
+            await axios.post('http://localhost:5000/send-email', {
+                ...emailData,
+                googlelink: link1Text,   // Pass link1 to the backend
+                facebooklink: link2Text,   // Pass link2 to the backend
+            });
+            alert('Email sent successfully');
+        } catch (error) {
+            console.error('Error sending email:', error);
+            alert('Error sending email');
+        }
+
+    };
+
+
 
     const navigate = useNavigate();
     return (
@@ -20,6 +83,41 @@ function Home() {
                 </div>
                 <div className="fw-light h3 text-sub" >
                     We'd Love to Hear Your Thoughts and Feedback!
+                    {(typeof backendData.users === 'undefined') ? (
+                        <p>Loading ...</p>
+                    ) : (
+                        backendData.users.map((user, i) => (
+                            <p key={i}> {user} </p>
+                        ))
+                    )}
+
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="email"
+                            name="to"
+                            placeholder="Recipient Email"
+                            value={emailData.to}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="name"
+                            value={emailData.name}
+                            onChange={handleChange}
+                            required
+                        />
+                        <textarea
+                            name="message"
+                            placeholder="Message"
+                            value={emailData.message}
+                            onChange={handleChange}
+                            required
+                        />
+                        <button type="submit">Send Email</button>
+                    </form>
+
                 </div>
 
 

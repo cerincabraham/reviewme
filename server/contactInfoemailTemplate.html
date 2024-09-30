@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: auto;
+      }
+      h2 {
+        color: #333;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .footer {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Hello, {{recipientName}}!</h2>
+      <p>
+        Please find the below links for writing positive reviews about us. Thank
+        you
+      </p>
+      <p><a href="{{googleLink}}" target="_blank">Google Link:</a></p>
+      <p><a href="{{facebookLink}}" target="_blank">Facebook link</a></p>
+      <div class="footer">
+        <p>Best regards,<br />KarakaFamilyHealth</p>
+      </div>
+    </div>
+  </body>
+</html>
