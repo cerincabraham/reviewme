@@ -1,11 +1,11 @@
 const express = require('express');
-const app = express();
-const cors = require('cors');
-const axios = require('axios');
 const nodemailer = require('nodemailer');
+const hbs = require('nodemailer-express-handlebars');
 const fs = require('fs'); // For reading the template file
 const path = require('path');
+const cors = require('cors');
 
+const app = express();
 require('dotenv').config();
 
 app.use(cors());
@@ -23,13 +23,17 @@ app.post('/send-email', async (req, res) => {
     console.log(req.body);
 
     // Load the email template
-    const templatePath = path.join(__dirname, 'contactInfoemailTemplate.html');
-    let htmlTemplate = fs.readFileSync(templatePath, 'utf-8');
+    //const templatePath = path.join(__dirname, './views/contactInfoemailTemplate.handlebars');
+    // let htmlTemplate = fs.readFileSync(templatePath, 'utf-8');
+
+
 
     // Replace placeholders with actual content
-    htmlTemplate = htmlTemplate.replace('{{recipientName}}', name);
-    htmlTemplate = htmlTemplate.replace('{{googleLink}}', googlelink);
-    htmlTemplate = htmlTemplate.replace('{{facebookLink}}', facebooklink);
+    //htmlTemplate = htmlTemplate.replace('{{recipientName}}', name);
+    //htmlTemplate = htmlTemplate.replace('{{googleLink}}', googlelink);
+    //htmlTemplate = htmlTemplate.replace('{{facebookLink}}', facebooklink);
+
+
 
 
 
@@ -44,12 +48,49 @@ app.post('/send-email', async (req, res) => {
         },
     });
 
+    // Set up handlebars template engine with Nodemailer
+    transporter.use(
+        'compile',
+        hbs({
+            viewEngine: {
+                extName: '.handlebars',
+                partialsDir: path.resolve('./views/'),
+                defaultLayout: false,
+            },
+            viewPath: path.resolve('./views/'),
+            extName: '.handlebars',
+        })
+    );
+
     // Email options
     const mailOptions = {
         from: process.env.SMTP_USER,        // Sender address
         to: to,                             // List of receivers
         subject: "KarakaFamilyHealth Review Links",                   // Subject line
-        html: htmlTemplate,                       // Set the HTML template as the email body
+        template: 'contactInfoemailTemplate', // Use the Handlebars template                    
+        context: {
+            recipientName: name,
+            googleLink: googlelink,
+            facebookLink: facebooklink,
+        },
+        // Attach the images with content IDs (cid)
+        attachments: [
+            {
+                filename: 'logo.png',
+                path: 'public/images/logo.jpg', // Path to the logo image
+                cid: 'logo@nodemailer',         // Use this in the HTML template
+            },
+            {
+                filename: 'google.png',
+                path: 'public/images/google.png',
+                cid: 'google@nodemailer',       // Use this in the HTML template
+            },
+            {
+                filename: 'facebook.png',
+                path: 'public/images/facebook.png',
+                cid: 'facebook@nodemailer',     // Use this in the HTML template
+            },
+        ],
     };
 
 
