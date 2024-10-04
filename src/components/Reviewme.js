@@ -88,13 +88,13 @@ function Reviewme() {
 
                         </form>
                     </div>
-                    <dv className='w-100 ps-5 border border-success mt-4 mb-4'>
+                    <div className='w-100 ps-5 border border-success mt-4 mb-4' style={{ height: "15%" }}>
                         <h1 >Share What's on Your Mind</h1>
-                        <h5 className='textSecondary'>We Value Your Voice!</h5>
-                        {recommend}
-                        {blockCard}
-                    </dv>
-                    <div className='d-flex flex-column justify-content-center align-items-center w-100 border border-success  position-relative overflow-hidden' style={{ height: "100%" }}>
+                        <h5 className='textSecondary'>We Value Your Voice!      {recommend}    {blockCard}</h5>
+
+
+                    </div>
+                    <div className='d-flex flex-column justify-content-center align-items-center w-100 border border-success  position-relative overflow-hidden' style={{ height: "85%" }}>
                         <div className={`blockConatiner${blockCard === 2 ? '' : ''}`} style={{ left: `${blockCard}%` }}>
                             <Feedback />
                             <RecommendUs callback={recommendCallback} />

@@ -9,7 +9,7 @@ function RecommendUs({ callback }) {
 
     return (
         <div className=' blockSection bgBlock d-flex flex-column justify-content-between align-items-center '>
-            <div className='text-white'>
+            <div className='text-white pt-3'>
                 <h2 className='textMain'>Would you recommend us?</h2>
                 <h5 className='textSecondary'>We're so excited to hear from you!</h5>
             </div>

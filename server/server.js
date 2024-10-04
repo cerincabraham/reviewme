@@ -39,12 +39,12 @@ app.post('/send-email', async (req, res) => {
 
     // Create a transporter using SMTP
     const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,         // e.g., "smtp.gmail.com"
-        port: process.env.SMTP_PORT,         // e.g., 587 for Gmail
+        host: process.env.SMTP_HOST1,         // e.g., "smtp.gmail.com"
+        port: process.env.SMTP_PORT1,         // e.g., 587 for Gmail
         secure: false,                       // true for 465, false for other ports
         auth: {
-            user: process.env.SMTP_USER,       // Your email address
-            pass: process.env.SMTP_PASS,       // Your email password or app password
+            user: process.env.SMTP_USER1,       // Your email address
+            pass: process.env.SMTP_PASS1,       // Your email password or app password
         },
     });
 
@@ -80,16 +80,6 @@ app.post('/send-email', async (req, res) => {
                 path: 'public/images/logo.jpg', // Path to the logo image
                 cid: 'logo@nodemailer',         // Use this in the HTML template
             },
-            {
-                filename: 'google.png',
-                path: 'public/images/google.png',
-                cid: 'google@nodemailer',       // Use this in the HTML template
-            },
-            {
-                filename: 'facebook.png',
-                path: 'public/images/facebook.png',
-                cid: 'facebook@nodemailer',     // Use this in the HTML template
-            },
         ],
     };
 
@@ -107,6 +97,70 @@ app.post('/send-email', async (req, res) => {
 
 });
 
+app.post('/send-feedback', async (req, res) => {
+    const { client, name, message } = req.body;
+    const to = 'cerin.abraham@gmail.com';
+    console.log(req.body);
+
+    // Create a transporter using SMTP
+    const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST2,         // e.g., "smtp.gmail.com"
+        port: process.env.SMTP_PORT2,         // e.g., 587 for Gmail
+        secure: false,                       // true for 465, false for other ports
+        auth: {
+            user: process.env.SMTP_USER2,       // Your email address
+            pass: process.env.SMTP_PASS2,       // Your email password or app password
+        },
+    });
+
+    // Set up handlebars template engine with Nodemailer
+    transporter.use(
+        'compile',
+        hbs({
+            viewEngine: {
+                extName: '.handlebars',
+                partialsDir: path.resolve('./views/'),
+                defaultLayout: false,
+            },
+            viewPath: path.resolve('./views/'),
+            extName: '.handlebars',
+        })
+    );
+    // Email options
+    const mailOptions = {
+        from: process.env.SMTP_USER2,        // Sender address
+        to: to,                             // List of receivers
+        subject: "KarakaFamilyHealth Feedback From Client",                   // Subject line
+        template: 'feedbackemailTemplate', // Use the Handlebars template                    
+        context: {
+            clientemail: client,
+            clientName: name,
+            message: message,
+        },
+        // Attach the images with content IDs (cid)
+        attachments: [
+            {
+                filename: 'logo.png',
+                path: 'public/images/logo.jpg', // Path to the logo image
+                cid: 'logo@nodemailer',         // Use this in the HTML template
+            },
+        ],
+    };
+
+
+    // Send email
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            return res.status(500).send('Failed to send email');
+        } else {
+            console.log('Email sent:', info.response);
+            return res.status(200).send('Email sent successfully');
+        }
+    });
+
+
+});
 
 
 

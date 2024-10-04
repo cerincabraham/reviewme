@@ -91,30 +91,33 @@ function Home() {
                         ))
                     )}
 
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="email"
-                            name="to"
-                            placeholder="Recipient Email"
-                            value={emailData.to}
-                            onChange={handleChange}
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="name"
-                            value={emailData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                        <textarea
-                            name="message"
-                            placeholder="Message"
-                            value={emailData.message}
-                            onChange={handleChange}
-                            required
-                        />
+                    <form onSubmit={handleSubmit} className=' textMain w-100 mt-2 d-flex flex-column justify-content-between align-items-left gap-1'>
+                        <div className='d-flex  justify-content-between align-items-start' style={{ width: "100%" }}>
+                            <label> Full Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Enter full name"
+                                value={emailData.name}
+                                onChange={handleChange}
+                                required
+                                style={{ width: "70%" }}
+                            />
+                        </div>
+                        <div className='d-flex  justify-content-between align-items-start' style={{ width: "100%" }}>
+                            <label> Email Address</label>
+                            <input
+                                type="email"
+                                name="to"
+                                placeholder="Enter email"
+                                value={emailData.to}
+                                onChange={handleChange}
+                                required
+                                style={{ width: "70%" }}
+                            />
+                        </div>
+
+
                         <button type="submit">Send Email</button>
                     </form>
 
