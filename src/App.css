@@ -16,6 +16,10 @@ h2 {
   font-size: 30px;
   font-weight: 700;
 }
+h4 {
+  font-size: 18px;
+  font-weight: 400;
+}
 h5 {
   font-size: 15px;
   font-weight: 500;
@@ -168,6 +172,12 @@ form .submitBtn {
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+.starBlock {
+  width: 85px;
+  height: 85px;
+  background-color: #0ab5b0;
 }
 
 @keyframes AnmIn {

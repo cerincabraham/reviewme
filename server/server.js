@@ -100,6 +100,7 @@ app.post('/send-email', async (req, res) => {
 app.post('/send-feedback', async (req, res) => {
     const { client, name, message } = req.body;
     const to = 'cerin.abraham@gmail.com';
+    const subject = 'KarakaFamilyHealth Feedback From Client';
     console.log(req.body);
 
     // Create a transporter using SMTP
@@ -130,7 +131,7 @@ app.post('/send-feedback', async (req, res) => {
     const mailOptions = {
         from: process.env.SMTP_USER2,        // Sender address
         to: to,                             // List of receivers
-        subject: "KarakaFamilyHealth Feedback From Client",                   // Subject line
+        subject: subject,                   // Subject line
         template: 'feedbackemailTemplate', // Use the Handlebars template                    
         context: {
             clientemail: client,

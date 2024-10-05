@@ -49,9 +49,11 @@ function Reviewme() {
     }
     const recommendCallback = (value) => {
         console.log(`You clicked on ${value}`);
-        if (value) {
+        if (value === "like") {
             setBlockCard('-200')
-        } else {
+        } else if (value === 'disLike') {
+            setBlockCard('0')
+        } else if (value === 'reviewLink') {
             setBlockCard('0')
         }
         setRecommend(value);
