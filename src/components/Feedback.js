@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import graphics01 from '../assets/reviewme-graphics02.png'
+
 function Feedback() {
   const [emailData, setEmailData] = useState({
     to: '',
@@ -36,9 +38,13 @@ function Feedback() {
 
   return (
     <div className=' blockSection bgBlock d-flex flex-column justify-content-between align-items-center '>
-      <div className='text-white'>
+      <div className='text-white text-center'>
         <h2 className='textMain'>We Value Your Feedback</h2>
-        <h5 className='textSecondary'>Sorry to Hear That! Help Us Understand How We Can Improve</h5>
+        <h5 className='textSecondary'>Sorry to hear that!. Help Us Uyderstand how we can improve</h5>
+      </div>
+      <div className='text-white text-center'>
+        <img src={graphics01} style={{ height: '130px' }} alt="graphics" />
+
       </div>
       <div className='mt-0 d-flex flex-column justify-content-between align-items-center' style={{ width: "65%" }}>
 
@@ -80,7 +86,7 @@ function Feedback() {
               value={emailData.message}
               onChange={handleChange}
               required
-              style={{ width: "100%", height: "75px" }}
+              style={{ width: "100%", height: "80px" }}
             />
           </div>
 
