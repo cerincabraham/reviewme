@@ -23,11 +23,13 @@ function RecommendUs({ callback }) {
 
             </div>
             <div className='d-flex justify-content-around align-items-center w-25'>
-                <img src={startGold} style={{ height: '20px' }} alt="start" />
-                <img src={startGold} style={{ height: '20px' }} alt="start" />
-                <img src={startGold} style={{ height: '20px' }} alt="start" />
-                <img src={startGold} style={{ height: '20px' }} alt="start" />
-                <img src={startGold} style={{ height: '20px' }} alt="start" />
+                {[...Array(5)].map(star => {
+                    return (
+                        <img src={startGold} style={{ height: '20px' }} alt="start" />
+                    );
+                })}
+
+
             </div>
             <div>
                 <h6 className='textSecondary pt-1'>We're so excited to hear from you!</h6>

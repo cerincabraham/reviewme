@@ -113,7 +113,7 @@ h6 {
 }
 .blockConatiner {
   height: 90%;
-  width: 300%;
+  width: 600%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -168,9 +168,10 @@ textarea {
 }
 
 form .submitBtn {
-  background-color: #04aa6d;
+  background-color: #fdbb45;
+  background-color: #f4821e;
   border: none;
-  color: white;
+  color: #ffffff;
   padding: 10px 15px;
   width: 1090%;
   text-decoration: none;
@@ -181,7 +182,22 @@ form .submitBtn {
 .starBlock {
   width: 85px;
   height: 85px;
-  background-color: #0ab5b0;
+  background-color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.starRange {
+  width: 100%;
+}
+
+.btnActive {
+}
+
+.btnDeactive {
+  background-color: #7e848e !important;
+  pointer-events: none;
 }
 
 @keyframes AnmIn {

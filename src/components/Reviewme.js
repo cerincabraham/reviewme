@@ -6,6 +6,10 @@ import emailjs from '@emailjs/browser';
 import Feedback from './Feedback';
 import RecommendUs from './RecommendUs';
 import Rateus from './Rateus';
+import Reviewlinks from './Reviewlinks'
+import Reviewemail from './Reviewemail';
+import ReviewQrcode from './ReviewQrcode';
+
 
 
 function Reviewme() {
@@ -54,8 +58,13 @@ function Reviewme() {
         } else if (value === 'disLike') {
             setBlockCard('0')
         } else if (value === 'reviewLink') {
-            setBlockCard('0')
+            setBlockCard('-300')
+        } else if (value === 'email') {
+            setBlockCard('-400')
+        } else if (value === 'qrcode') {
+            setBlockCard('-500')
         }
+
         setRecommend(value);
     }
     return (
@@ -101,6 +110,9 @@ function Reviewme() {
                             <Feedback />
                             <RecommendUs callback={recommendCallback} />
                             <Rateus callback={recommendCallback} />
+                            <Reviewlinks callback={recommendCallback} />
+                            <Reviewemail callback={recommendCallback} />
+                            <ReviewQrcode callback={recommendCallback} />
                         </div>
                     </div>
                 </div >
