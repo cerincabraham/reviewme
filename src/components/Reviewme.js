@@ -71,8 +71,8 @@ function Reviewme() {
         <div className='d-flex flex-column align-items-center bgSecondary ' style={{ height: "100vh" }}>
             <NavLink />
             <div className=' d-flex flex-column justify-content-start align-items-center w-100 bgPrimary rounded-bottom-5 dropShadow' style={{ height: "80vh" }}>
-                <div className=' d-flex flex-column justify-content-start align-items-center border border-danger w-50 ' style={{ height: "90%" }}>
-                    <div className=' d-none flex-column justify-content-evenly align-items-center border border-success' style={{ height: "20%" }}>
+                <div className=' d-flex flex-column justify-content-start align-items-center w-50 ' style={{ height: "90%" }}>
+                    <div className=' d-none flex-column justify-content-evenly align-items-center ' style={{ height: "20%" }}>
                         <div className=''>
                             ReviewMe
                         </div>
@@ -99,13 +99,13 @@ function Reviewme() {
 
                         </form>
                     </div>
-                    <div className='w-100 ps-5 border border-success mt-4 mb-4' style={{ height: "15%" }}>
+                    <div className='w-100 ps-5 mt-4 mb-4' style={{ height: "15%" }}>
                         <h1 >Share What's on Your Mind</h1>
                         <h5 className='textSecondary'>We Value Your Voice!      {recommend}    {blockCard}</h5>
 
 
                     </div>
-                    <div className='d-flex flex-column justify-content-center align-items-center w-100 border border-success  position-relative overflow-hidden' style={{ height: "85%" }}>
+                    <div className='d-flex flex-column justify-content-center align-items-center w-100  position-relative overflow-hidden' style={{ height: "85%" }}>
                         <div className={`blockConatiner${blockCard === 2 ? '' : ''}`} style={{ left: `${blockCard}%` }}>
                             <Feedback />
                             <RecommendUs callback={recommendCallback} />

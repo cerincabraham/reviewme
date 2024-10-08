@@ -6,14 +6,41 @@ import graphics01 from '../assets/reviewme-graphics02.png'
 import { IoIosSend } from "react-icons/io";
 
 function Reviewemail({ callback }) {
-    const [link1, setLink1] = useState('');
-    const [link2, setLink2] = useState('');
 
-    const [backendData, setBackendData] = useState([{}]);
+    const [googleLInk, setGoogleLink] = useState("");
+    const [facebookLInk, setFacebookLink] = useState("");
+
     const [emailData, setEmailData] = useState({
         to: '',
         name: '',
     });
+
+    const navigate = useNavigate();
+
+    const fetchGoogleLink = () => {
+        fetch("/Links/googleLink.txt")
+            .then((response) => response.text())
+            .then((text) => {
+                setGoogleLink(text);
+            })
+            .catch((error) => console.error("Error reading the file: ", error));
+    }
+
+    const fetchFacebookLink = () => {
+        fetch("/Links/facebookLink.txt")
+            .then((response) => response.text())
+            .then((text) => {
+                setFacebookLink(text);
+            })
+            .catch((error) => console.error("Error reading the file: ", error));
+    }
+
+    useEffect(() => {
+        fetchGoogleLink();
+        fetchFacebookLink();
+
+    }, []);
+
 
 
     const handleChange = (e) => {
@@ -24,22 +51,13 @@ function Reviewemail({ callback }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log('Fetching google link', googleLInk);
+        console.log('Fetching facebook link', facebookLInk);
         try {
-
-            const responseLink1 = await fetch('/Links/googleLink.txt');
-            const link1Text = await responseLink1.text();
-            setLink1(link1Text);
-
-            const responseLink2 = await fetch('/Links/facebookLink.txt');
-            const link2Text = await responseLink2.text();
-            setLink2(link2Text);
-
-
             await axios.post('http://localhost:5000/send-email', {
                 ...emailData,
-                googlelink: link1Text,   // Pass link1 to the backend
-                facebooklink: link2Text,   // Pass link2 to the backend
+                googlelink: googleLInk,   // Pass link1 to the backend
+                facebooklink: facebookLInk,   // Pass link2 to the backend
             });
             alert('Email sent successfully');
         } catch (error) {
@@ -47,9 +65,11 @@ function Reviewemail({ callback }) {
             alert('Error sending email');
         }
 
+        navigate('/');
+
     };
 
-    const navigate = useNavigate();
+
 
     return (
         <div className=' blockSection bgBlock d-flex flex-column justify-content-between align-items-center '>
@@ -58,12 +78,12 @@ function Reviewemail({ callback }) {
                 <h4 className='textSecondary'>Enter your email address to get Google & Facebook review links</h4>
             </div>
             <div className='text-white text-center'>
-                <img src={graphics01} style={{ height: '90px' }} alt="graphics" />
+                <img src={graphics01} style={{ height: '130px' }} alt="graphics" />
 
             </div>
-            <div>
+            <div className='mt-0 d-flex flex-column justify-content-between align-items-center' style={{ width: "65%" }}>
 
-                <form onSubmit={handleSubmit} className=' textMain w-100 mt-2 d-flex flex-column justify-content-between align-items-left gap-1'>
+                <form onSubmit={handleSubmit} className=' textMain w-100 mt-2 d-flex flex-column justify-content-between align-items-left gap-1' >
                     <div className='d-flex  justify-content-between align-items-start' style={{ width: "100%" }}>
                         <label> Full Name</label>
                         <input
@@ -90,11 +110,11 @@ function Reviewemail({ callback }) {
                     </div>
 
 
-                    <button type="submit">Submit</button>
+                    <div className='d-flex justify-content-center align-items-center w-100'>
+                        <button className="submitBtn" type="submit">Send <IoIosSend /> </button>
+                    </div>
+
                 </form>
-            </div>
-            <div className='d-flex gap-4 pt-2'>
-                <button className='reviewBtn btnColorHappy d-flex justify-content-center align-items-center gap-2' onClick={() => callback("email")}> Email <IoIosSend />  </button>
             </div>
         </div>
     )

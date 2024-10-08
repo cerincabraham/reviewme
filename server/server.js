@@ -64,7 +64,7 @@ app.post('/send-email', async (req, res) => {
 
     // Email options
     const mailOptions = {
-        from: process.env.SMTP_USER,        // Sender address
+        from: process.env.SMTP_USER1,        // Sender address
         to: to,                             // List of receivers
         subject: "KarakaFamilyHealth Review Links",                   // Subject line
         template: 'contactInfoemailTemplate', // Use the Handlebars template                    
@@ -99,7 +99,7 @@ app.post('/send-email', async (req, res) => {
 
 app.post('/send-feedback', async (req, res) => {
     const { client, name, message } = req.body;
-    const to = 'cerin.abraham@gmail.com';
+    const to = 'cerin.abraham@gmail.com';  //info@karakafamilyhealth.co.nz
     const subject = 'KarakaFamilyHealth Feedback From Client';
     console.log(req.body);
 

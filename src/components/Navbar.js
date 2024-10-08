@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 function Navbar() {
     return (
         <nav className='d-flex flex-row justify-content-center align-items-center  position-relative text-dark font-bold dropShadow bgNav w-100' style={{ height: "10vh" }}>
-            <div className='d-flex flex-row  justify-content-start align-items-center ps-5 border border-danger w-50' style={{ height: "100%" }}>
+            <div className='d-flex flex-row  justify-content-start align-items-center ps-5 w-50' style={{ height: "100%" }}>
                 <img src={logo} style={{ height: '45px' }} alt="Logo" />
 
             </div>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import graphics01 from '../assets/reviewme-graphics02.png'
+import { IoIosSend } from "react-icons/io";
 
 function Feedback() {
   const [emailData, setEmailData] = useState({
@@ -10,7 +11,7 @@ function Feedback() {
     name: '',
   });
 
-
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setEmailData({ ...emailData, [e.target.name]: e.target.value });
@@ -34,7 +35,7 @@ function Feedback() {
   };
 
 
-  const navigate = useNavigate();
+
 
   return (
     <div className=' blockSection bgBlock d-flex flex-column justify-content-between align-items-center '>
@@ -91,7 +92,7 @@ function Feedback() {
           </div>
 
           <div className='d-flex justify-content-center align-items-center w-100'>
-            <button className="submitBtn" type="submit">Send</button>
+            <button className="submitBtn" type="submit">Send <IoIosSend /></button>
           </div>
 
         </form>
