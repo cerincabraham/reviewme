@@ -152,6 +152,9 @@ form label {
 input[type="text"],
 input[type="email"],
 input[type="phone"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
 textarea {
   height: 35px;
   padding: 0px 10px;
@@ -162,6 +165,9 @@ textarea {
   background-color: #55555500;
   color: white;
   font-size: 13px;
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 textarea {
   padding: 5px 10px;
@@ -198,6 +204,12 @@ form .submitBtn {
 .btnDeactive {
   background-color: #7e848e !important;
   pointer-events: none;
+}
+
+.divline {
+  width: 100%;
+  border-top: 1px solid #7e848e;
+  margin-top: 10px;
 }
 
 @keyframes AnmIn {

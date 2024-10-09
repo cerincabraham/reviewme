@@ -42,17 +42,29 @@ function UpdateContactInfo() {
             <div className=' d-flex flex-column justify-content-start align-items-center border border-danger w-50' style={{ height: "90vh" }}>
                 <div className=' blockSection  bgBlock d-flex flex-column justify-content-start align-items-center' style={{ height: "90%" }}>
                     <div className='text-white text-center'>
-                        <h2 className='textMain'>We Value Your Feedback</h2>
+                        <h2 className='textMain'>Update Fields</h2>
                         <h5 className='textSecondary'>Sorry to hear that!. Help Us Uyderstand how we can improve</h5>
                     </div>
                     <div className='mt-0 d-flex flex-column justify-content-between align-items-center' style={{ width: "75%" }}>
                         <form onSubmit={handleSubmit} className=' textMain w-100 mt-2 d-flex flex-column justify-content-between align-items-left gap-1' >
+                            <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
+                                <label> NHI</label>
+                                <input
+                                    type="text"
+                                    name="nhi"
+                                    placeholder="Enter Your NHI Number"
+                                    value={emailData.nhi}
+                                    onChange={handleChange}
+                                    required
+                                    style={{ width: "100%" }}
+                                />
+                            </div>
                             <div className='d-flex justify-content-between align-items-center w-100'>
                                 <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
                                     <label> First Name</label>
                                     <input
                                         type="text"
-                                        name="name"
+                                        name="firstname"
                                         placeholder="Enter First Name"
                                         value={emailData.firstname}
                                         onChange={handleChange}
@@ -64,7 +76,7 @@ function UpdateContactInfo() {
                                     <label> Last Name</label>
                                     <input
                                         type="text"
-                                        name="name"
+                                        name="lastname"
                                         placeholder="Enter Last Name"
                                         value={emailData.lastname}
                                         onChange={handleChange}
@@ -77,9 +89,9 @@ function UpdateContactInfo() {
                                 <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
                                     <label> Mobile Number</label>
                                     <input
-                                        type="text"
+                                        type="tel"
                                         name="mobile"
-                                        pattern="[789][-][0-9]{9}"
+                                        pattern="[0-9]{10}"
                                         placeholder="Enter Mobile Number"
                                         value={emailData.mobile}
                                         onChange={handleChange}
@@ -104,29 +116,80 @@ function UpdateContactInfo() {
                             <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
                                 <label> DOB </label>
                                 <input
-                                    type="date"
+                                    type="text"
                                     name="dob"
-                                    placeholder="Enter DOB"
-                                    value={emailData.client}
+                                    placeholder="Enter Your Date Of Birth"
+                                    value={emailData.dob}
+                                    onFocus={(e) => e.target.type = 'date'}
+                                    onBlur={(e) => e.target.type = 'text'}
                                     onChange={handleChange}
                                     required
                                     style={{ width: "100%" }}
                                 />
                             </div>
 
+                            <div className='d-flex justify-content-between align-items-center w-100'>
+                                <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
+                                    <label>Address</label>
+                                    <input
+                                        type="text"
+                                        name="street"
+                                        placeholder="Enter Street Address"
+                                        value={emailData.street}
+                                        onChange={handleChange}
+                                        required
+                                        style={{ width: "100%" }}
+                                    />
+                                </div>
 
-                            <div className='d-flex flex-column  justify-content-between align-items-start pt-2'>
-                                <label> Feedback Message</label>
-                                <textarea
-                                    name="message"
-                                    placeholder="Feedback"
-                                    rows="3"
-                                    value={emailData.message}
-                                    onChange={handleChange}
-                                    required
-                                    style={{ width: "100%", height: "80px" }}
-                                />
+                                <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
+                                    <label> Suburb</label>
+                                    <input
+                                        type="text"
+                                        name="suburb"
+                                        placeholder="Enter Suburb"
+                                        value={emailData.suburb}
+                                        onChange={handleChange}
+                                        required
+                                        style={{ width: "100%" }}
+                                    />
+                                </div>
                             </div>
+                            <div className='d-flex justify-content-between align-items-center w-100'>
+                                <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
+                                    <label>City</label>
+                                    <input
+                                        type="text"
+                                        name="city"
+                                        placeholder="Enter City"
+                                        value={emailData.city}
+                                        onChange={handleChange}
+                                        required
+                                        style={{ width: "100%" }}
+                                    />
+                                </div>
+
+                                <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
+                                    <label> Post</label>
+                                    <input
+                                        type="text"
+                                        name="post"
+                                        placeholder="Enter Post"
+                                        pattern="[0-9]{4}"
+                                        value={emailData.post}
+                                        onChange={handleChange}
+                                        required
+                                        style={{ width: "100%" }}
+                                    />
+                                </div>
+                            </div>
+                            <div className='divline'>
+
+                            </div>
+                            <div>
+                                <h4 className='textMain'>We Value Your Feedback</h4>
+                            </div>
+
 
                             <div className='d-flex justify-content-center align-items-center w-100'>
                                 <button className="submitBtn" type="submit">Send <IoIosSend /></button>
