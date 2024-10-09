@@ -39,14 +39,17 @@ function UpdateContactInfo() {
     return (
         <div className='d-flex flex-column align-items-center bg-praimary'>
             <NavLink />
-            <div className=' d-flex flex-column justify-content-start align-items-center  w-50' style={{ height: "90vh" }}>
+            <div className=' d-flex flex-column justify-content-start align-items-center  pt-3 w-50' style={{ height: "96vh" }}>
                 <div className=' blockSection  bgBlock d-flex flex-column justify-content-start align-items-center' style={{ height: "90%" }}>
                     <div className='text-white text-center'>
-                        <h2 className='textMain'>Update Fields</h2>
-                        <h5 className='textSecondary'>Please fill all the required fields</h5>
+                        <h2 className='textMain'>Personal & Emergency Contact Update</h2>
+                        <h5 className='textSecondary'>Please provide any updated personal or emergency contact details.</h5>
                     </div>
                     <div className='mt-0 d-flex flex-column justify-content-between align-items-center' style={{ width: "75%" }}>
                         <form onSubmit={handleSubmit} className=' textMain w-100 mt-2 d-flex flex-column justify-content-between align-items-left gap-1' >
+                            <div className=' pt-3 pb-0'>
+                                <h4 className='textMain'>Personal Details</h4>
+                            </div>
                             <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
                                 <label> NHI</label>
                                 <input
@@ -73,12 +76,12 @@ function UpdateContactInfo() {
                                     />
                                 </div>
                                 <div className='d-flex flex-column  justify-content-between align-items-start ' style={{ width: "48%" }}>
-                                    <label> Last Name</label>
+                                    <label> SurName</label>
                                     <input
                                         type="text"
-                                        name="lastname"
-                                        placeholder="Enter Last Name"
-                                        value={emailData.lastname}
+                                        name="surname"
+                                        placeholder="Enter SurName"
+                                        value={emailData.surname}
                                         onChange={handleChange}
                                         required
                                         style={{ width: "100%" }}
