@@ -39,11 +39,11 @@ function UpdateContactInfo() {
     return (
         <div className='d-flex flex-column align-items-center bg-praimary'>
             <NavLink />
-            <div className=' d-flex flex-column justify-content-start align-items-center border border-danger w-50' style={{ height: "90vh" }}>
+            <div className=' d-flex flex-column justify-content-start align-items-center  w-50' style={{ height: "90vh" }}>
                 <div className=' blockSection  bgBlock d-flex flex-column justify-content-start align-items-center' style={{ height: "90%" }}>
                     <div className='text-white text-center'>
                         <h2 className='textMain'>Update Fields</h2>
-                        <h5 className='textSecondary'>Sorry to hear that!. Help Us Uyderstand how we can improve</h5>
+                        <h5 className='textSecondary'>Please fill all the required fields</h5>
                     </div>
                     <div className='mt-0 d-flex flex-column justify-content-between align-items-center' style={{ width: "75%" }}>
                         <form onSubmit={handleSubmit} className=' textMain w-100 mt-2 d-flex flex-column justify-content-between align-items-left gap-1' >
@@ -183,16 +183,66 @@ function UpdateContactInfo() {
                                     />
                                 </div>
                             </div>
-                            <div className='divline'>
-
-                            </div>
-                            <div>
-                                <h4 className='textMain'>We Value Your Feedback</h4>
+                            <div className='divline pt-3 pb-2'>
+                                <h4 className='textMain'>Emergency Contact</h4>
+                                <h6>Next of Kin Contact Info</h6>
                             </div>
 
+                            <div className='d-flex justify-content-between align-items-center w-100'>
+                                <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
+                                    <label>Full Name</label>
+                                    <input
+                                        type="text"
+                                        name="kinname"
+                                        placeholder="Enter Full Name"
+                                        value={emailData.kinname}
+                                        onChange={handleChange}
+                                        style={{ width: "100%" }}
+                                    />
+                                </div>
 
+                                <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
+                                    <label> Relationship</label>
+                                    <input
+                                        type="text"
+                                        name="relation"
+                                        placeholder="Enter Relationship"
+                                        value={emailData.relation}
+                                        onChange={handleChange}
+                                        style={{ width: "100%" }}
+                                    />
+                                </div>
+                            </div>
+                            <div className='d-flex justify-content-between align-items-center w-100'>
+                                <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
+                                    <label>Mobile</label>
+                                    <input
+                                        type="tel"
+                                        name="kinmobile"
+                                        pattern="[0-9]{10}"
+                                        placeholder="Enter Mobile Number"
+                                        value={emailData.kinmobile}
+                                        onChange={handleChange}
+                                        style={{ width: "100%" }}
+                                    />
+                                </div>
+
+                                <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
+                                    <label> Phone</label>
+                                    <input
+                                        type="tel"
+                                        name="kinphone"
+                                        placeholder="Enter Home Phone Number"
+                                        value={emailData.kinphone}
+                                        onChange={handleChange}
+                                        style={{ width: "100%" }}
+                                    />
+                                </div>
+                            </div>
+                            <div className='divline pt-2'>
+                            </div>
                             <div className='d-flex justify-content-center align-items-center w-100'>
-                                <button className="submitBtn" type="submit">Send <IoIosSend /></button>
+                                <button className="submitBtn" type="submit">Submit <IoIosSend /></button>
                             </div>
 
                         </form>

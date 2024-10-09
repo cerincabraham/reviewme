@@ -11,7 +11,7 @@ function Navbar() {
                 <img src={logo} style={{ height: '45px' }} alt="Logo" />
 
             </div>
-            <div className="d-flex flex-row  justify-content-center align-items-center gap-5 position-absolute top-0 end-0 bgBlock topbart-nav border border-danger" >
+            <div className="d-flex flex-row  justify-content-center align-items-center gap-5 position-absolute top-0 end-0 bgBlock topbart-nav " >
                 <img src={backInactive} style={{ height: '30px' }} alt="Back Inactive" />
                 <Link to="/" className='nav-link'><img src={homeicon} style={{ height: '25px' }} alt="GroupLogo" /></Link>
             </div>
