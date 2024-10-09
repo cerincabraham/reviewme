@@ -125,8 +125,8 @@ h6 {
   width: 100%;
   border-radius: 30px;
   background-image: url(./assets/blockBg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: contain;
   padding-block: 30px;
   margin-inline: 25px;
   z-index: 1000;
