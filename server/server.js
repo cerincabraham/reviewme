@@ -188,7 +188,7 @@ app.post('/send-update', async (req, res) => {
         from: process.env.SMTP_USER2,        // Sender address
         to: to,                             // List of receivers
         subject: subject,                   // Subject line
-        template: 'contactInfoemailTemplate', // Use the Handlebars template                    
+        template: 'updateemailTemplate', // Use the Handlebars template                    
         context: {
             nhi: nhi,
             firstname: firstname,
