@@ -17,25 +17,12 @@ app.get('/api', (req, res) => {
 });
 
 
+
+
 // Route to send email
 app.post('/send-email', async (req, res) => {
     const { to, name, googlelink, facebooklink } = req.body;
     console.log(req.body);
-
-    // Load the email template
-    //const templatePath = path.join(__dirname, './views/contactInfoemailTemplate.handlebars');
-    // let htmlTemplate = fs.readFileSync(templatePath, 'utf-8');
-
-
-
-    // Replace placeholders with actual content
-    //htmlTemplate = htmlTemplate.replace('{{recipientName}}', name);
-    //htmlTemplate = htmlTemplate.replace('{{googleLink}}', googlelink);
-    //htmlTemplate = htmlTemplate.replace('{{facebookLink}}', facebooklink);
-
-
-
-
 
     // Create a transporter using SMTP
     const transporter = nodemailer.createTransport({
@@ -163,6 +150,85 @@ app.post('/send-feedback', async (req, res) => {
 
 });
 
+
+app.post('/send-update', async (req, res) => {
+    const { nhi, firstname, surname, mobile, email, dob, street, suburb, city, post, kinname, relation, kinmobile, kinphone } = req.body;
+    const to = 'cerin.abraham@gmail.com';  //info@karakafamilyhealth.co.nz
+    const subject = 'Client Personal & Emergency Contact Update';
+    console.log(req.body);
+
+
+    // Create a transporter using SMTP
+    const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST2,         // e.g., "smtp.gmail.com"
+        port: process.env.SMTP_PORT2,         // e.g., 587 for Gmail
+        secure: false,                       // true for 465, false for other ports
+        auth: {
+            user: process.env.SMTP_USER2,       // Your email address
+            pass: process.env.SMTP_PASS2,       // Your email password or app password
+        },
+    });
+
+    // Set up handlebars template engine with Nodemailer
+    transporter.use(
+        'compile',
+        hbs({
+            viewEngine: {
+                extName: '.handlebars',
+                partialsDir: path.resolve('./views/'),
+                defaultLayout: false,
+            },
+            viewPath: path.resolve('./views/'),
+            extName: '.handlebars',
+        })
+    );
+
+    // Email options
+    const mailOptions = {
+        from: process.env.SMTP_USER2,        // Sender address
+        to: to,                             // List of receivers
+        subject: subject,                   // Subject line
+        template: 'contactInfoemailTemplate', // Use the Handlebars template                    
+        context: {
+            nhi: nhi,
+            firstname: firstname,
+            surname: surname,
+            mobile: mobile,
+            email: email,
+            dob: dob,
+            street: street,
+            suburb: suburb,
+            city: city,
+            post: post,
+            kinname: kinname,
+            relation: relation,
+            kinmobile: kinmobile,
+            kinphone: kinphone,
+        },
+        // Attach the images with content IDs (cid)
+        attachments: [
+            {
+                filename: 'logo.png',
+                path: 'public/images/logo.jpg', // Path to the logo image
+                cid: 'logo@nodemailer',         // Use this in the HTML template
+            },
+        ],
+    };
+
+
+    // Send email
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            return res.status(500).send('Failed to send email');
+        } else {
+            console.log('Email sent:', info.response);
+            return res.status(200).send('Email sent successfully');
+        }
+    });
+
+
+});
 
 
 app.listen(5000, () => { console.log("Server started on port 5000") });

@@ -4,11 +4,10 @@ import '../App.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-import graphics01 from '../assets/reviewme-graphics02.png'
 import { IoIosSend } from "react-icons/io";
 
 function UpdateContactInfo() {
-    const [emailData, setEmailData] = useState({
+    const [formData, setformData] = useState({
         to: '',
         name: '',
     });
@@ -16,8 +15,8 @@ function UpdateContactInfo() {
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        setEmailData({ ...emailData, [e.target.name]: e.target.value });
-        console.log("email data", emailData);
+        setformData({ ...formData, [e.target.name]: e.target.value });
+        console.log("Forem Data", formData);
     };
 
     const handleSubmit = async (e) => {
@@ -25,15 +24,13 @@ function UpdateContactInfo() {
 
         try {
 
-            //await axios.post('http://localhost:5000/send-feedback', {
-            //   ...emailData
-            //});
+            await axios.post('http://localhost:5000/send-update', { ...formData });
             alert('Email sent successfully');
         } catch (error) {
             console.error('Error sending email:', error);
             alert('Error sending email');
         }
-        navigate('/')
+        // navigate('/')
     };
 
     return (
@@ -56,7 +53,7 @@ function UpdateContactInfo() {
                                     type="text"
                                     name="nhi"
                                     placeholder="Enter Your NHI Number"
-                                    value={emailData.nhi}
+                                    value={formData.nhi}
                                     onChange={handleChange}
                                     required
                                     style={{ width: "100%" }}
@@ -69,7 +66,7 @@ function UpdateContactInfo() {
                                         type="text"
                                         name="firstname"
                                         placeholder="Enter First Name"
-                                        value={emailData.firstname}
+                                        value={formData.firstname}
                                         onChange={handleChange}
                                         required
                                         style={{ width: "100%" }}
@@ -81,7 +78,7 @@ function UpdateContactInfo() {
                                         type="text"
                                         name="surname"
                                         placeholder="Enter SurName"
-                                        value={emailData.surname}
+                                        value={formData.surname}
                                         onChange={handleChange}
                                         required
                                         style={{ width: "100%" }}
@@ -96,7 +93,7 @@ function UpdateContactInfo() {
                                         name="mobile"
                                         pattern="[0-9]{10}"
                                         placeholder="Enter Mobile Number"
-                                        value={emailData.mobile}
+                                        value={formData.mobile}
                                         onChange={handleChange}
                                         required
                                         style={{ width: "100%" }}
@@ -109,7 +106,7 @@ function UpdateContactInfo() {
                                         type="email"
                                         name="email"
                                         placeholder="Enter Your Email"
-                                        value={emailData.email}
+                                        value={formData.email}
                                         onChange={handleChange}
                                         required
                                         style={{ width: "100%" }}
@@ -122,7 +119,7 @@ function UpdateContactInfo() {
                                     type="text"
                                     name="dob"
                                     placeholder="Enter Your Date Of Birth"
-                                    value={emailData.dob}
+                                    value={formData.dob}
                                     onFocus={(e) => e.target.type = 'date'}
                                     onBlur={(e) => e.target.type = 'text'}
                                     onChange={handleChange}
@@ -138,7 +135,7 @@ function UpdateContactInfo() {
                                         type="text"
                                         name="street"
                                         placeholder="Enter Street Address"
-                                        value={emailData.street}
+                                        value={formData.street}
                                         onChange={handleChange}
                                         required
                                         style={{ width: "100%" }}
@@ -151,7 +148,7 @@ function UpdateContactInfo() {
                                         type="text"
                                         name="suburb"
                                         placeholder="Enter Suburb"
-                                        value={emailData.suburb}
+                                        value={formData.suburb}
                                         onChange={handleChange}
                                         required
                                         style={{ width: "100%" }}
@@ -165,7 +162,7 @@ function UpdateContactInfo() {
                                         type="text"
                                         name="city"
                                         placeholder="Enter City"
-                                        value={emailData.city}
+                                        value={formData.city}
                                         onChange={handleChange}
                                         required
                                         style={{ width: "100%" }}
@@ -179,7 +176,7 @@ function UpdateContactInfo() {
                                         name="post"
                                         placeholder="Enter Post"
                                         pattern="[0-9]{4}"
-                                        value={emailData.post}
+                                        value={formData.post}
                                         onChange={handleChange}
                                         required
                                         style={{ width: "100%" }}
@@ -198,7 +195,7 @@ function UpdateContactInfo() {
                                         type="text"
                                         name="kinname"
                                         placeholder="Enter Full Name"
-                                        value={emailData.kinname}
+                                        value={formData.kinname}
                                         onChange={handleChange}
                                         style={{ width: "100%" }}
                                     />
@@ -210,7 +207,7 @@ function UpdateContactInfo() {
                                         type="text"
                                         name="relation"
                                         placeholder="Enter Relationship"
-                                        value={emailData.relation}
+                                        value={formData.relation}
                                         onChange={handleChange}
                                         style={{ width: "100%" }}
                                     />
@@ -224,7 +221,7 @@ function UpdateContactInfo() {
                                         name="kinmobile"
                                         pattern="[0-9]{10}"
                                         placeholder="Enter Mobile Number"
-                                        value={emailData.kinmobile}
+                                        value={formData.kinmobile}
                                         onChange={handleChange}
                                         style={{ width: "100%" }}
                                     />
@@ -236,7 +233,7 @@ function UpdateContactInfo() {
                                         type="tel"
                                         name="kinphone"
                                         placeholder="Enter Home Phone Number"
-                                        value={emailData.kinphone}
+                                        value={formData.kinphone}
                                         onChange={handleChange}
                                         style={{ width: "100%" }}
                                     />
