@@ -87,7 +87,7 @@ app.post('/send-email', async (req, res) => {
 app.post('/send-feedback', async (req, res) => {
     const { client, name, message } = req.body;
     const to = 'cerin.abraham@gmail.com';  //info@karakafamilyhealth.co.nz
-    const subject = 'KarakaFamilyHealth Feedback From Client';
+    const subject = `KarakaFamilyHealth Feedback From ${name}`;
     console.log(req.body);
 
     // Create a transporter using SMTP
@@ -154,7 +154,8 @@ app.post('/send-feedback', async (req, res) => {
 app.post('/send-update', async (req, res) => {
     const { nhi, firstname, surname, mobile, email, dob, street, suburb, city, post, kinname, relation, kinmobile, kinphone } = req.body;
     const to = 'cerin.abraham@gmail.com';  //info@karakafamilyhealth.co.nz
-    const subject = 'Client Personal & Emergency Contact Update';
+    const subject = `Personal & Emergency Contact Update From ${firstname}`;
+    const cc = email;
     console.log(req.body);
 
 

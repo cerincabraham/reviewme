@@ -11,7 +11,7 @@ function UpdateContactInfo() {
         to: '',
         name: '',
     });
-
+    const [sendBtn, setSentBtn] = useState(true)
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -21,7 +21,7 @@ function UpdateContactInfo() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setSentBtn(false);
         try {
 
             await axios.post('http://localhost:5000/send-update', { ...formData });
@@ -30,7 +30,7 @@ function UpdateContactInfo() {
             console.error('Error sending email:', error);
             alert('Error sending email');
         }
-        // navigate('/')
+        navigate('/')
     };
 
     return (
@@ -55,13 +55,12 @@ function UpdateContactInfo() {
                                     placeholder="Enter Your NHI Number"
                                     value={formData.nhi}
                                     onChange={handleChange}
-                                    required
                                     style={{ width: "100%" }}
                                 />
                             </div>
                             <div className='d-flex justify-content-between align-items-center w-100'>
                                 <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
-                                    <label> First Name</label>
+                                    <label> First Name *</label>
                                     <input
                                         type="text"
                                         name="firstname"
@@ -73,7 +72,7 @@ function UpdateContactInfo() {
                                     />
                                 </div>
                                 <div className='d-flex flex-column  justify-content-between align-items-start ' style={{ width: "48%" }}>
-                                    <label> SurName</label>
+                                    <label> SurName *</label>
                                     <input
                                         type="text"
                                         name="surname"
@@ -87,7 +86,7 @@ function UpdateContactInfo() {
                             </div>
                             <div className='d-flex justify-content-between align-items-center w-100'>
                                 <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
-                                    <label> Mobile Number</label>
+                                    <label> Mobile Number *</label>
                                     <input
                                         type="tel"
                                         name="mobile"
@@ -101,7 +100,7 @@ function UpdateContactInfo() {
                                 </div>
 
                                 <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
-                                    <label> Email Address</label>
+                                    <label> Email Address *</label>
                                     <input
                                         type="email"
                                         name="email"
@@ -114,7 +113,7 @@ function UpdateContactInfo() {
                                 </div>
                             </div>
                             <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
-                                <label> DOB </label>
+                                <label> DOB *</label>
                                 <input
                                     type="text"
                                     name="dob"
@@ -130,7 +129,7 @@ function UpdateContactInfo() {
 
                             <div className='d-flex justify-content-between align-items-center w-100'>
                                 <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
-                                    <label>Address</label>
+                                    <label>Address *</label>
                                     <input
                                         type="text"
                                         name="street"
@@ -143,7 +142,7 @@ function UpdateContactInfo() {
                                 </div>
 
                                 <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
-                                    <label> Suburb</label>
+                                    <label> Suburb *</label>
                                     <input
                                         type="text"
                                         name="suburb"
@@ -157,7 +156,7 @@ function UpdateContactInfo() {
                             </div>
                             <div className='d-flex justify-content-between align-items-center w-100'>
                                 <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
-                                    <label>City</label>
+                                    <label>City *</label>
                                     <input
                                         type="text"
                                         name="city"
@@ -170,7 +169,7 @@ function UpdateContactInfo() {
                                 </div>
 
                                 <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
-                                    <label> Post</label>
+                                    <label> Post *</label>
                                     <input
                                         type="text"
                                         name="post"
@@ -242,7 +241,7 @@ function UpdateContactInfo() {
                             <div className='divline pt-2'>
                             </div>
                             <div className='d-flex justify-content-center align-items-center w-100'>
-                                <button className="submitBtn" type="submit">Submit <IoIosSend /></button>
+                                <button className={`submitBtn ${sendBtn ? 'btnActive' : 'btnDeactive'}`} type="submit">Submit <IoIosSend /></button>
                             </div>
 
                         </form>

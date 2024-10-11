@@ -46,7 +46,7 @@ function Reviewme() {
                         <h1 >Share What's on Your Mind</h1>
                         <h5 className='textSecondary'>We Value Your Voice! </h5>
                     </div>
-                    <div className='d-flex flex-column justify-content-center align-items-center w-100  position-relative overflow-hidden' style={{ height: "85%" }}>
+                    <div className='d-flex flex-column justify-content-center align-items-center w-100  position-relative overflow-hidden' style={{ height: "95%" }}>
                         <div className={`blockConatiner${blockCard === 2 ? '' : ''}`} style={{ left: `${blockCard}%` }}>
                             <Feedback />
                             <RecommendUs callback={recommendCallback} />

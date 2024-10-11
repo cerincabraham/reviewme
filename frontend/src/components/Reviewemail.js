@@ -9,7 +9,7 @@ function Reviewemail({ callback }) {
 
     const [googleLInk, setGoogleLink] = useState("");
     const [facebookLInk, setFacebookLink] = useState("");
-
+    const [sendBtn, setSentBtn] = useState(true)
     const [emailData, setEmailData] = useState({
         to: '',
         name: '',
@@ -51,8 +51,7 @@ function Reviewemail({ callback }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Fetching google link', googleLInk);
-        console.log('Fetching facebook link', facebookLInk);
+        setSentBtn(false);
         try {
             await axios.post('http://localhost:5000/send-email', {
                 ...emailData,
@@ -111,7 +110,7 @@ function Reviewemail({ callback }) {
 
 
                     <div className='d-flex justify-content-center align-items-center w-100'>
-                        <button className="submitBtn" type="submit">Send <IoIosSend /> </button>
+                        <button className={`submitBtn ${sendBtn ? 'btnActive' : 'btnDeactive'}`} type="submit">Send <IoIosSend /> </button>
                     </div>
 
                 </form>
