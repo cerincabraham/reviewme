@@ -131,6 +131,14 @@ h6 {
   margin-inline: 25px;
   z-index: 1000;
 }
+.wifiBlock {
+  height: 70%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px solid #494f5871;
+}
 
 .blockIn {
   animation: AnmIn 0.65s ease-in-out forwards;

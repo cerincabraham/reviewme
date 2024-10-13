@@ -1,4 +1,5 @@
 const express = require('express');
+const { exec } = require('child_process');
 const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
 const fs = require('fs'); // For reading the template file
@@ -229,6 +230,21 @@ app.post('/send-update', async (req, res) => {
     });
 
 
+});
+
+
+//Route to send wifi status
+app.get('/wifi-status', (req, res) => {
+    exec('iwgetid', (error, stdout) => {
+        if (error) {
+            return res.json({ status: 'disconnected' });
+        }
+        if (stdout.includes('ESSID')) {
+            return res.json({ status: 'connected' });
+        } else {
+            return res.json({ status: 'disconnected' });
+        }
+    });
 });
 
 

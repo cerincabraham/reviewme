@@ -2,9 +2,11 @@ import React from 'react'
 
 import { useNavigate } from 'react-router-dom';
 
+
 import '../App.css'
 import groupLogo from '../assets/KPT-Logo---01.png'
 import logoWhite from '../assets/Karakafamily-logo---01.png'
+import WifiStatus from './WifiStatus';
 
 
 function Home() {
@@ -14,6 +16,7 @@ function Home() {
 
         <div className='background-wrapper h-100'>
             <div className="d-flex flex-column text-center text-white  justify-content-between" style={{ height: "250px" }} >
+                <WifiStatus />
                 <div>
                     <img src={groupLogo} style={{ height: '35px' }} alt="GroupLogo" />
                 </div>
