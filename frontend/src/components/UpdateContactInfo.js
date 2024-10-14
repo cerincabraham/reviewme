@@ -48,7 +48,7 @@ function UpdateContactInfo() {
                                 <h4 className='textMain'>Personal Details</h4>
                             </div>
                             <div className='d-flex flex-column justify-content-between align-items-start' style={{ width: "48%" }}>
-                                <label> NHI</label>
+                                <label> NHI (Optional)</label>
                                 <input
                                     type="text"
                                     name="nhi"

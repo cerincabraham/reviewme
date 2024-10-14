@@ -9,17 +9,14 @@ function Reviewlinks({ callback }) {
         <div className=' blockSection bgBlock d-flex flex-column justify-content-between align-items-center '>
             <div className='text-white text-center pt-3'>
                 <h1 className='textMain'>Review Links</h1>
-                <h4 className='textSecondary'>We can share the review links either on your</h4>
-                <h4 className='textSecondary'>email or by the on screen QR-code</h4>
-
+                <h4>Scan the QR-Code or Receive review link by email</h4>
             </div>
             <div className='text-white text-center'>
                 <img src={graphics01} style={{ height: '190px' }} alt="graphics" />
-
             </div>
-            <div className='d-flex gap-4 pt-2'>
-                <button className='reviewBtn btnColorHappy d-flex justify-content-center align-items-center gap-2' onClick={() => callback("email")}> Email <FaEnvelope size={35} />  </button>
+            <div className='d-flex justify-content-around align-items-center  gap-1 pt-2 w-75'>
                 <button className='reviewBtn btnColorHappy d-flex justify-content-center align-items-center gap-2' onClick={() => callback("qrcode")}> QR code <BsQrCode size={30} />  </button>
+                <button className='reviewBtn btnColorHappy d-flex justify-content-center align-items-center gap-2' onClick={() => callback("email")}> Email <FaEnvelope size={35} />  </button>
             </div>
         </div>
     )

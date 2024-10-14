@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { BsBarChartSteps } from "react-icons/bs";
+import { TbHelpSquare } from "react-icons/tb";
 
 import thumbUp from '../assets/thumb-up.png';
 import thumbDown from '../assets/thumb-down.png';
@@ -13,7 +15,14 @@ function RecommendUs({ callback }) {
         <div className=' blockSection bgBlock d-flex flex-column justify-content-around align-items-center '>
 
             <div className='text-white pt-0 text-center '>
-                <h1 className='textMain'>Would you recommend us?</h1>
+                <div className='d-flex justify-content-around align-items-center gap-3' style={{ height: "50px" }}>
+                    <img src={startGold} style={{ height: '20px' }} alt="start" />
+                    <div style={{ height: "30px" }}>
+                        <h1 className='textMain'>We Value Your Feedback!</h1>
+                    </div>
+                    <img src={startGold} style={{ height: '20px' }} alt="start" />
+                </div>
+
                 <h4 >Your Opinion helps us reach more people!</h4>
                 <h5 >Rate us only if Impressed with our service!</h5>
 
@@ -35,8 +44,8 @@ function RecommendUs({ callback }) {
                 <h6 className='textSecondary pt-1'>We're so excited to hear from you!</h6>
             </div>
             <div className='d-flex gap-4 pt-2'>
-                <button className='reviewBtn btnColorHappy align-items-center' onClick={() => callback("like")}> Happy   <img src={thumbUp} style={{ height: '30px' }} alt="thumb Up" /></button>
-                <button className='reviewBtn btnColorUnhappy align-items-center' onClick={() => callback("disLike")}> Unhappy   <img src={thumbDown} style={{ height: '30px' }} alt="thumb Down" /></button>
+                <button className='reviewBtn btnColorHappy align-items-center' onClick={() => callback("like")}> Delighted   <img src={thumbUp} style={{ height: '30px' }} alt="thumb Up" /></button>
+                <button className='reviewBtn btnColorUnhappy align-items-center' onClick={() => callback("disLike")}> Need Improvement <TbHelpSquare size={30} /></button>
             </div>
 
         </div>

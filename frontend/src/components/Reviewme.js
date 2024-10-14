@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import "../App.css"
 import NavLink from './Navbar';
-import emailjs from '@emailjs/browser';
 import Feedback from './Feedback';
 import RecommendUs from './RecommendUs';
 import Rateus from './Rateus';
 import Reviewlinks from './Reviewlinks'
 import Reviewemail from './Reviewemail';
 import ReviewQrcode from './ReviewQrcode';
+import PopupModal from './PopupModal';
 
 
 
@@ -45,6 +45,7 @@ function Reviewme() {
     return (
         <div className='d-flex flex-column align-items-center bgSecondary ' style={{ height: "100vh" }}>
             <NavLink callback={btnCallback} backMotion="Testing" />
+            {/* <PopupModal messsage1="We vlaue your feedback." messsage2="We have recevied your email." /> */}
             <div className=' d-flex flex-column justify-content-start align-items-center w-100 bgPrimary rounded-bottom-5 dropShadow' style={{ height: "80vh" }}>
                 <div className=' d-flex flex-column justify-content-start align-items-center w-50 ' style={{ height: "90%" }}>
 
@@ -63,6 +64,7 @@ function Reviewme() {
                             <ReviewQrcode callback={recommendCallback} />
                         </div>
                     </div>
+
                 </div >
             </div>
 

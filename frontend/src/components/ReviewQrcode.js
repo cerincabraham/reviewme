@@ -45,7 +45,7 @@ function ReviewQrcode({ callback }) {
                         fgColor='green'
                         value={googleLInk}
                     />
-                    <h4 className='textMain pt-2'>Google Link</h4>
+                    <h4 className='textMain pt-2'>Google Review Link</h4>
                 </div >
                 <div className='d-flex flex-column align-items-center'>
 
@@ -55,7 +55,7 @@ function ReviewQrcode({ callback }) {
                         fgColor="#f4821e"
                         value={facebookLInk}
                     />
-                    <h4 className='textMain pt-2'>Facebook Link</h4>
+                    <h4 className='textMain pt-2'>Facebook Review Link</h4>
                 </div>
 
             </div>
