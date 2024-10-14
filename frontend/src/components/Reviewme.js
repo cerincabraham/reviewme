@@ -13,7 +13,7 @@ import PopupModal from './PopupModal';
 
 
 function Reviewme() {
-
+    const [showPopup, setShowPopup] = useState('none');
     const [blockCard, setBlockCard] = useState('-100');
     const [recommend, setRecommend] = useState('none');
     const [backBtn, setBackBtn] = useState(false);
@@ -42,10 +42,20 @@ function Reviewme() {
         setBackBtn(e);
     }
 
+    const handlePopup = (data) => {
+        setShowPopup(data);
+    }
+
     return (
         <div className='d-flex flex-column align-items-center bgSecondary ' style={{ height: "100vh" }}>
             <NavLink callback={btnCallback} backMotion="Testing" />
-            {/* <PopupModal messsage1="We vlaue your feedback." messsage2="We have recevied your email." /> */}
+            {showPopup === "feedbackPopup" && (
+                <PopupModal messsage1="We vlaue your feedback." messsage2="We have recevied your email." />
+            )}
+
+            {showPopup === "linkEmailPopup" && (
+                <PopupModal messsage1="For taking the time to share your feedback. We've sent an email with " messsage2="links to Google and Facebook where you can leave your review." />
+            )}
             <div className=' d-flex flex-column justify-content-start align-items-center w-100 bgPrimary rounded-bottom-5 dropShadow' style={{ height: "80vh" }}>
                 <div className=' d-flex flex-column justify-content-start align-items-center w-50 ' style={{ height: "90%" }}>
 
@@ -56,11 +66,11 @@ function Reviewme() {
                     </div>
                     <div className='d-flex flex-column justify-content-center align-items-center w-100  position-relative overflow-hidden' style={{ height: "95%" }}>
                         <div className={`blockConatiner${blockCard === 2 ? '' : ''}`} style={{ left: `${blockCard}%` }}>
-                            <Feedback />
+                            <Feedback OnEmailSent={handlePopup} />
                             <RecommendUs callback={recommendCallback} />
                             <Rateus callback={recommendCallback} />
                             <Reviewlinks callback={recommendCallback} />
-                            <Reviewemail callback={recommendCallback} />
+                            <Reviewemail OnEmailSent={handlePopup} callback={recommendCallback} />
                             <ReviewQrcode callback={recommendCallback} />
                         </div>
                     </div>

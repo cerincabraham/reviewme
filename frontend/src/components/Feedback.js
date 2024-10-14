@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import graphics01 from '../assets/reviewme-graphics02.png'
 import { IoIosSend } from "react-icons/io";
 
-function Feedback() {
+function Feedback({ OnEmailSent }) {
     const [emailData, setEmailData] = useState({
         to: '',
         name: '',
@@ -22,18 +22,23 @@ function Feedback() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSentBtn(false);
+
         try {
 
             await axios.post('http://localhost:5000/send-feedback', {
                 ...emailData
             });
 
-            alert('Email sent successfully');
+            OnEmailSent("feedbackPopup");
+
         } catch (error) {
+
             console.error('Error sending email:', error);
             alert('Error sending email');
+
         }
-        navigate('/')
+
+
     };
 
 

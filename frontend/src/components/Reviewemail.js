@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import graphics01 from '../assets/reviewme-graphics02.png'
 import { IoIosSend } from "react-icons/io";
 
-function Reviewemail({ callback }) {
+function Reviewemail({ callback, OnEmailSent }) {
 
     const [googleLInk, setGoogleLink] = useState("");
     const [facebookLInk, setFacebookLink] = useState("");
@@ -58,13 +58,11 @@ function Reviewemail({ callback }) {
                 googlelink: googleLInk,   // Pass link1 to the backend
                 facebooklink: facebookLInk,   // Pass link2 to the backend
             });
-            alert('Email sent successfully');
+            OnEmailSent("linkEmailPopup");
         } catch (error) {
             console.error('Error sending email:', error);
             alert('Error sending email');
         }
-
-        navigate('/');
 
     };
 

@@ -13,12 +13,10 @@ app.use(cors());
 app.use(express.json());
 
 
+
 app.get('/api', (req, res) => {
     res.json({ "users": ["userOne, userTwo,userThree"] });
 });
-
-
-
 
 // Route to send email
 app.post('/send-email', async (req, res) => {
@@ -87,7 +85,7 @@ app.post('/send-email', async (req, res) => {
 
 app.post('/send-feedback', async (req, res) => {
     const { client, name, message } = req.body;
-    const to = 'cerin.abraham@gmail.com';  //info@karakafamilyhealth.co.nz
+    const to = 'info@karakafamilyhealth.co.nz';
     const subject = `KarakaFamilyHealth Feedback From ${name}`;
     console.log(req.body);
 
@@ -102,6 +100,7 @@ app.post('/send-feedback', async (req, res) => {
         },
     });
 
+
     // Set up handlebars template engine with Nodemailer
     transporter.use(
         'compile',
@@ -115,6 +114,7 @@ app.post('/send-feedback', async (req, res) => {
             extName: '.handlebars',
         })
     );
+
     // Email options
     const mailOptions = {
         from: process.env.SMTP_USER2,        // Sender address
@@ -151,10 +151,9 @@ app.post('/send-feedback', async (req, res) => {
 
 });
 
-
 app.post('/send-update', async (req, res) => {
     const { nhi, firstname, surname, mobile, email, dob, street, suburb, city, post, kinname, relation, kinmobile, kinphone } = req.body;
-    const to = 'cerin.abraham@gmail.com';  //info@karakafamilyhealth.co.nz
+    const to = 'info@karakafamilyhealth.co.nz';
     const subject = `Personal & Emergency Contact Update From ${firstname}`;
     const cc = email;
     console.log(req.body);
@@ -231,7 +230,6 @@ app.post('/send-update', async (req, res) => {
 
 
 });
-
 
 //Route to send wifi status
 app.get('/wifi-status', (req, res) => {

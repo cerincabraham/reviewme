@@ -3,14 +3,16 @@ import NavLink from './Navbar';
 import '../App.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
 import { IoIosSend } from "react-icons/io";
+import PopupModal from './PopupModal';
 
-function UpdateContactInfo() {
+function UpdateContactInfo({ OnEmailSent }) {
     const [formData, setformData] = useState({
         to: '',
         name: '',
     });
+
+    const [showPopup, setShowPopup] = useState(false);
     const [sendBtn, setSentBtn] = useState(true)
     const navigate = useNavigate();
 
@@ -22,20 +24,28 @@ function UpdateContactInfo() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSentBtn(false);
+
         try {
 
-            await axios.post('http://localhost:5000/send-update', { ...formData });
-            alert('Email sent successfully');
+            { /* await axios.post('http://localhost:5000/send-update', { ...formData });  */ }
+
+            setShowPopup(true);
         } catch (error) {
+
             console.error('Error sending email:', error);
             alert('Error sending email');
+
         }
-        navigate('/')
+
     };
 
     return (
         <div className='d-flex flex-column align-items-center bg-praimary'>
             <NavLink />
+            {showPopup && (
+                <PopupModal messsage1="We have recevied your email." messsage2="We will update your details" />
+            )}
+
             <div className=' d-flex flex-column justify-content-start align-items-center  pt-3 w-50' style={{ height: "96vh" }}>
                 <div className=' blockSection  bgBlock d-flex flex-column justify-content-start align-items-center' style={{ height: "90%" }}>
                     <div className='text-white text-center'>

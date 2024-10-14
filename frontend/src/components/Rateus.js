@@ -15,6 +15,7 @@ function Rateus({ callback }) {
             <div className='d-flex justify-content-between align-items-center w-50'>
 
                 {[...Array(5)].map((star, index) => {
+                    console.log(index);
                     const currentRating = index + 1;
                     return (
                         <div className='starBlock' onMouseEnter={() => setHover(currentRating)} onMouseLeave={() => setHover(null)} onClick={() => setRating(currentRating)}>
