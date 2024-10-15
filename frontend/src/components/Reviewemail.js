@@ -76,7 +76,6 @@ function Reviewemail({ callback, OnEmailSent }) {
             </div>
             <div className='text-white text-center'>
                 <img src={graphics01} style={{ height: '130px' }} alt="graphics" />
-
             </div>
             <div>
                 <h5 className='textSecondary'>Disclaimer:</h5>

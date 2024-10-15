@@ -13,7 +13,6 @@ app.use(cors());
 app.use(express.json());
 
 
-
 app.get('/api', (req, res) => {
     res.json({ "users": ["userOne, userTwo,userThree"] });
 });
