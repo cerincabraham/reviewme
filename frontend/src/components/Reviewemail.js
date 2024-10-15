@@ -78,6 +78,10 @@ function Reviewemail({ callback, OnEmailSent }) {
                 <img src={graphics01} style={{ height: '130px' }} alt="graphics" />
 
             </div>
+            <div>
+                <h5 className='textSecondary'>Disclaimer:</h5>
+                <h6 className='textSecondary '>We committed to value your privacy and we never save or collect your data.</h6>
+            </div>
             <div className='mt-0 d-flex flex-column justify-content-between align-items-center' style={{ width: "65%" }}>
 
                 <form onSubmit={handleSubmit} className=' textMain w-100 mt-2 d-flex flex-column justify-content-between align-items-left gap-1' >

@@ -27,7 +27,7 @@ function Rateus({ callback }) {
 
             <div className='text-white text-center'>
                 <h4 className='textSecondary'>...and leave a helpful review. It takes only 2 mints.</h4>
-                <h5>Good rating will activate next button</h5>
+
             </div>
             <div className='d-flex gap-4'>
 

@@ -48,7 +48,7 @@ function Feedback({ OnEmailSent }) {
         <div className=' blockSection bgBlock d-flex flex-column justify-content-between align-items-center '>
             <div className='text-white text-center'>
                 <h2 className='textMain'>We Value Your Feedback</h2>
-                <h5 className='textSecondary'>Sorry to hear that!. Help Us Uyderstand how we can improve</h5>
+                <h5 className='textSecondary'> Your Feedback Helps Us To Improve</h5>
             </div>
             <div className='text-white text-center'>
                 <img src={graphics01} style={{ height: '130px' }} alt="graphics" />
